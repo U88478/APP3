@@ -1,0 +1,35 @@
+# Doxyfile configuration for Doxygen
+
+# Project related configuration options
+PROJECT_NAME           = "APP3"
+OUTPUT_DIRECTORY       = "docs"
+
+# Configuration options related to the input files
+INPUT                  = .
+RECURSIVE              = YES
+EXCLUDE                = venv
+
+# Configuration options related to the output files
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+GENERATE_MAN           = NO
+GENERATE_RTF           = NO
+GENERATE_XML           = YES
+OUTPUT_LANGUAGE        = English
+
+# Configuration options related to the HTML output
+HTML_OUTPUT            = html
+
+# Configuration options related to Graphviz
+HAVE_DOT               = YES
+DOT_PATH               = "C:/Program Files/Graphviz/bin"
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+GRAPHICAL_HIERARCHY    = YES
+DOT_IMAGE_FORMAT       = svg
+INTERACTIVE_SVG        = YES
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES

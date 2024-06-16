@@ -1,0 +1,43 @@
+ERROR:root:Error displaying graphs: No module named 'distutils'
+Traceback (most recent call last):
+  File "C:\Users\chelo\PycharmProjects\score\main_window.py", line 289, in displayGraphs
+    from pycallgraph2 import PyCallGraph
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\__init__.py", line 11, in <module>
+    from .pycallgraph import PyCallGraph
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\pycallgraph.py", line 3, in <module>
+    from .output import Output
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\output\__init__.py", line 3, in <module>
+    from .output import Output
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\output\output.py", line 3, in <module>
+    from distutils.spawn import find_executable
+ModuleNotFoundError: No module named 'distutils'
+ERROR:root:Error displaying graphs: No module named 'distutils'
+Traceback (most recent call last):
+  File "C:\Users\chelo\PycharmProjects\score\main_window.py", line 289, in displayGraphs
+    from pycallgraph2 import PyCallGraph
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\__init__.py", line 11, in <module>
+    from .pycallgraph import PyCallGraph
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\pycallgraph.py", line 3, in <module>
+    from .output import Output
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\output\__init__.py", line 3, in <module>
+    from .output import Output
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\output\output.py", line 3, in <module>
+    from distutils.spawn import find_executable
+ModuleNotFoundError: No module named 'distutils'
+ERROR:root:Error displaying graphs: The command "dot" is required to be in your path.
+Traceback (most recent call last):
+  File "C:\Users\chelo\PycharmProjects\score\main_window.py", line 295, in displayGraphs
+    with PyCallGraph(output=graphviz):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\pycallgraph.py", line 31, in __init__
+    self.reset()
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\pycallgraph.py", line 52, in reset
+    self.prepare_output(output)
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\pycallgraph.py", line 96, in prepare_output
+    output.sanity_check()
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\output\graphviz.py", line 65, in sanity_check
+    self.ensure_binary(self.tool)
+  File "C:\Users\chelo\PycharmProjects\score\.venv\Lib\site-packages\pycallgraph2\output\output.py", line 96, in ensure_binary
+    raise PyCallGraphException(
+pycallgraph2.exceptions.PyCallGraphException: The command "dot" is required to be in your path.
+ERROR:root:Error generating data: 'int' object has no attribute 'encode'
