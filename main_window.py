@@ -15,6 +15,7 @@ session = Session()
 
 class Ui_MainWindow(object):
     def __init__(self, user):
+        self.main_window = None
         self.user = user
 
     def setupUi(self, MainWindow):
@@ -22,6 +23,7 @@ class Ui_MainWindow(object):
         MainWindow.resize(600, 400)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.main_window = MainWindow
 
         self.welcomeLabel = QtWidgets.QLabel(self.centralwidget)
         self.welcomeLabel.setGeometry(QtCore.QRect(150, 10, 300, 40))
@@ -106,6 +108,12 @@ class Ui_MainWindow(object):
         self.profileButton.setFont(QFont('Arial', 12))
         self.profileButton.setText("Profile")
 
+        self.logoutButton = QtWidgets.QPushButton(self.centralwidget)
+        self.logoutButton.setGeometry(QtCore.QRect(20, 10, 50, 20))
+        self.logoutButton.setObjectName("logoutButton")
+        self.logoutButton.setFont(QFont('Arial', 8))
+        self.logoutButton.setText("Log out")
+
         self.leaderboardButton = QtWidgets.QPushButton(self.centralwidget)
         self.leaderboardButton.setGeometry(QtCore.QRect(480, 230, 100, 40))
         self.leaderboardButton.setObjectName("leaderboardButton")
@@ -173,6 +181,7 @@ class Ui_MainWindow(object):
         self.updateLabels()
         self.playButton.clicked.connect(self.playGame)
         self.profileButton.clicked.connect(self.openProfile)
+        self.logoutButton.clicked.connect(self.logOut)
         self.leaderboardButton.clicked.connect(self.openLeaderboard)
 
     def retranslateUi(self, MainWindow):
@@ -252,16 +261,35 @@ class Ui_MainWindow(object):
         compare_sorting_algorithms()
 
     def openLeaderboard(self):
-        self.leaderboard_window = QtWidgets.QMainWindow()
-        self.ui = Ui_LeaderboardWindow()
-        self.ui.setupUi(self.leaderboard_window)
-        self.leaderboard_window.show()
+        try:
+            self.leaderboard_window = QtWidgets.QMainWindow()
+            self.ui = Ui_LeaderboardWindow()
+            self.ui.setupUi(self.leaderboard_window)
+            self.leaderboard_window.show()
+        except Exception as e:
+            print(e)
 
     def openProfile(self):
         self.profile_window = QtWidgets.QMainWindow()
         self.ui = Ui_ProfileWindow(self.user)
         self.ui.setupUi(self.profile_window)
         self.profile_window.show()
+
+    def logOut(self):
+        try:
+            # Close the main window
+            self.main_window.close()
+
+            from login_window import Ui_LoginWindow
+
+            # Create a new login window
+            self.login_window = QtWidgets.QMainWindow()
+            self.ui = Ui_LoginWindow()
+            self.ui.setupUi(self.login_window)
+            self.ui.main_window = self.login_window
+            self.login_window.show()
+        except Exception as e:
+            print(e)
 
     if __name__ == "__main__":
         import sys

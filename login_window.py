@@ -92,7 +92,7 @@ if __name__ == "__main__":
     ])
 
     graphviz = GraphvizOutput()
-    graphviz.output_file = 'call_graph_final.png'
+    graphviz.output_file = 'call_graph.png'
 
     with PyCallGraph(output=graphviz, config=config):
         app = QtWidgets.QApplication(sys.argv)

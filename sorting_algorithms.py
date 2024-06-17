@@ -104,7 +104,6 @@ def compare_sorting_algorithms():
     plt.plot(sizes, insertion_times, label='Insertion Sort', marker='o')
     plt.plot(sizes, merge_times, label='Merge Sort', marker='o')
 
-    # Draw time labels only at the last point of each graph
     plt.text(sizes[-1], bubble_times[-1], f'{bubble_times[-1]:.4f}s', fontsize=9, verticalalignment='bottom')
     plt.text(sizes[-1], insertion_times[-1], f'{insertion_times[-1]:.4f}s', fontsize=9, verticalalignment='bottom')
     plt.text(sizes[-1], merge_times[-1], f'{merge_times[-1]:.4f}s', fontsize=9, verticalalignment='bottom')

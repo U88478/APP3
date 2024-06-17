@@ -1,5 +1,6 @@
 # leaderboard_window.py
 from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtGui import QFont
 from sqlalchemy.orm import sessionmaker
 
 from models import Stat, User, engine
@@ -20,6 +21,13 @@ class Ui_LeaderboardWindow(object):
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setHorizontalHeaderLabels(["Username", "Average Score", "Games Played"])
+
+        self.recordCountSpinBox = QtWidgets.QSpinBox(self.centralwidget)
+        self.recordCountSpinBox.setGeometry(QtCore.QRect(20, 330, 100, 30))
+        self.recordCountSpinBox.setMinimum(1)
+        self.recordCountSpinBox.setMaximum(10000)
+        self.recordCountSpinBox.setValue(100)
+        self.recordCountSpinBox.setObjectName("recordCountSpinBox")
 
         self.refreshButton = QtWidgets.QPushButton(self.centralwidget)
         self.refreshButton.setGeometry(QtCore.QRect(130, 330, 100, 30))
@@ -43,7 +51,8 @@ class Ui_LeaderboardWindow(object):
 
     def loadLeaderboardData(self):
         try:
-            stats = session.query(Stat).join(User).order_by(Stat.average_score.desc()).limit(100).all()
+            record_count = self.recordCountSpinBox.value()
+            stats = session.query(Stat).join(User).order_by(Stat.average_score.desc()).limit(record_count).all()
             self.tableWidget.setRowCount(len(stats))
             for row_idx, stat in enumerate(stats):
                 self.tableWidget.setItem(row_idx, 0, QtWidgets.QTableWidgetItem(stat.user.username))
